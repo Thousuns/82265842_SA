@@ -1,0 +1,44 @@
+11번) ArgoCD를 통해 Application 배포후, 
+배포된 application의 링크를 제출하세요(EX: sample.ce-[사번]-sa.kubepia.net)
+
+ArgoCD 접속
+argocd.ce-82265842-sa.kubepia.net/applications
+
+ID/PW
+admin / lVweT-EGlx-MgX38
+
+아래 가이드 따라서 진행
+https://dev.azure.com/ktds-playground/CE-Notification/_wiki/wikis/CE-Notification.wiki/298/CD-ArgoCD
+https://devocean.sk.com/blog/techBoardDetail.do?ID=166251&boardType=techBlog
+
+주요 작성 사항
+* GENERAL
+App name : a82265842
+Project name : default
+Auto-Create-Namespace : enabled(체크)
+
+* SOURCE
+Repository URL : manifest 파일이 있는, 내 깃허브 URL
+> https://github.com/Thousuns/82265842_SA.git
+Revision : 브랜치선택
+> main 
+Path :  manifest 파일이 있는 경로 
+> manifests/overlays/prod
+
+* DESTINATION
+Cluster URL : https://kubernetes.default.svc
+Namespace : a82265842
+
+
+진행 완료 후, 확인
+kubectl get pods -n a82265842
+
+
+cepgstapacr.azurecr.io/cloud-sample
+
+
+
+
+
+
+
